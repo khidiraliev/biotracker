@@ -1,6 +1,6 @@
 package io.github.khidiraliev.biotracker.domain;
 
-import io.github.khidiraliev.biotracker.dto.unit.UnitCatalogRequest;
+import io.github.khidiraliev.biotracker.dto.unit.UnitCatalogResponse;
 import io.github.khidiraliev.biotracker.dto.unit.UnitCreatingRequest;
 import io.github.khidiraliev.biotracker.dto.unit.UnitMainInfoResponse;
 import io.github.khidiraliev.biotracker.entity.Unit;
@@ -21,7 +21,7 @@ import java.util.List;
 public class UnitService {
     private final UnitRepository repository;
 
-    public List<UnitCatalogRequest> getAllForCatalog() {
+    public List<UnitCatalogResponse> getAllForCatalog() {
         return repository.findAllUnitForCatalog();
     }
 

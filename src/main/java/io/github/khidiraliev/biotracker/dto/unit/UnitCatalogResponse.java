@@ -1,6 +1,6 @@
 package io.github.khidiraliev.biotracker.dto.unit;
 
-public record UnitCatalogRequest(
+public record UnitCatalogResponse(
         Long id,
         String fullName
 ) {

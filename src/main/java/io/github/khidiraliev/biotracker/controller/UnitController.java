@@ -1,7 +1,7 @@
 package io.github.khidiraliev.biotracker.controller;
 
 import io.github.khidiraliev.biotracker.domain.UnitService;
-import io.github.khidiraliev.biotracker.dto.unit.UnitCatalogRequest;
+import io.github.khidiraliev.biotracker.dto.unit.UnitCatalogResponse;
 import io.github.khidiraliev.biotracker.dto.unit.UnitCreatingRequest;
 import io.github.khidiraliev.biotracker.dto.unit.UnitMainInfoResponse;
 import jakarta.validation.Valid;
@@ -20,7 +20,7 @@ public class UnitController {
     private final UnitService service;
 
     @GetMapping
-    public List<UnitCatalogRequest> getCatalog() {
+    public List<UnitCatalogResponse> getCatalog() {
         return service.getAllForCatalog();
     }
 
