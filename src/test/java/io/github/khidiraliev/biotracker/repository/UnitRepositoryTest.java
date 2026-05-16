@@ -1,6 +1,7 @@
 package io.github.khidiraliev.biotracker.repository;
 
 import io.github.khidiraliev.biotracker.dto.unit.UnitCatalogResponse;
+import io.github.khidiraliev.biotracker.dto.unit.UnitMainInfoResponse;
 import io.github.khidiraliev.biotracker.entity.Unit;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
@@ -13,6 +14,7 @@ import org.springframework.boot.jpa.test.autoconfigure.TestEntityManager;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -45,6 +47,27 @@ class UnitRepositoryTest {
                     .toList();
 
             assertThat(repository.findAllUnitForCatalog()).containsAll(responses);
+        }
+    }
+
+    @Nested
+    class FindMainInfoById {
+        Unit unit;
+
+        @BeforeEach
+        void initDB() {
+            unit = new Unit();
+            unit.setFullName("testUnit");
+            unit.setShortName("u");
+            unit = entityManager.persist(unit);
+        }
+
+        @Test
+        void shouldReturnCorrectDto() {
+            Long id = unit.getId();
+            UnitMainInfoResponse expectedResponse = new UnitMainInfoResponse(id, unit.getFullName(), unit.getShortName());
+
+            assertThat(repository.findMainInfoById(id)).isEqualTo(Optional.of(expectedResponse));
         }
     }
 }
